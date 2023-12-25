@@ -1,5 +1,9 @@
+[ORIGINAL PROJECT README]
+[THESE INSTRUCTIONS ARE OUTDATED]
+
 # Gradescope Autograder for C++
 
+#Download original project to see changes made.
 Download v1.1: [autograder.zip](https://github.com/UgiR/gradescope-autograde-cpp/releases/download/v1.1/autograder.zip)
 
 To use new features in the master branch, clone or download this repository.
