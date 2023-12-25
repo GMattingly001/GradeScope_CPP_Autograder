@@ -1,0 +1,5 @@
+weight: 25.0
+name: 'Running predefined unit test set C'
+message: 'Your implementation must meet these functional spedifications'
+show_output: yes
+timeout: 30

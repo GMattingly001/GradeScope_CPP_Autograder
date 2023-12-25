@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#  compile test:
+#  cmake . should have been called as a precursor, building all a test program in the ../tests folder 
+#  and building all submitted files stored in the ../tests/student-src folder
+#
+# Identify the directory name for this test
+myDir=$(echo $PWD)
+mytestDir=$(echo ${myDir##*/})
+cd .. 
+mkdir src
+mv *.cpp ./src
+mv *.h ./src
+mv *.hpp ./src
+cp ./$mytestDir/src-CMakeLists.txt ./src/CMakeLists.txt
+cp ./$mytestDir/parent-CMakeLists.txt ./CMakeLists.txt
+
+#update the parent-CMakeLists.txt file to include this directory name:
+echo "add_subdirectory($mytestDir)" >> ./CMakeLists.txt
+
+cmake -B build
+cmake --build build
+#  cmake will build all of the gtest framework and link to everything in the ../src
+mv ./build/$mytestDir/InstructorTests .
+
+# Move all the files back;
+mv ./src/*.hpp .
+mv ./src/*.cpp .
+mv ./src/*.h .
+rm -rf ./src
+rm ./CMakeLists.txt
+
+#  clean up unnecessary files
+rm -rf build
+
+#  execute the test
+./InstructorTests
+rm ./InstructorTests
